@@ -31,10 +31,16 @@ jobs:
       
       - name: Get dependencies
         run: flutter pub get
+
+      - name: Fix local.properties
+        run: echo "flutter.sdk=$FLUTTER_HOME" > android/local.properties
       
       - name: Build APK (Universal)
         # Added --no-tree-shake-icons to prevent common icon-font crashes
-        run: flutter build apk --release --no-tree-shake-icons -v
+        run: |
+          flutter clean
+          flutter pub get
+          flutter build apk --release --no-tree-shake-icons
 
       - name: Build Split APKs
         # Note: We don't run 'clean' between these, or it will delete the first build
@@ -63,3 +69,7 @@ jobs:
             build/app/outputs/flutter-apk/app-x86_64-release.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create local.properties
+        run: |
+          echo "flutter.sdk=$FLUTTER_HOME" > android/local.properties
