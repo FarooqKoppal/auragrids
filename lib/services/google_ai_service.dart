@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:auragrids/local_ai_key.dart' as local_key;
 
 // Build-time injection: flutter build ... --dart-define=AI_API_KEY=your_key
-const String _kAiApiKeyFromEnv = String.fromEnvironment('AI_API_KEY', defaultValue: 'AIzaSyAuDhSOYPUE0etKcrLJoQ-8w44kiKjiL14');
+const String _kAiApiKeyFromEnv = String.fromEnvironment('AI_API_KEY', defaultValue: '');
 
 class GoogleAiService {
   final String? _apiKey;
