@@ -1,4 +1,4 @@
-package com.example.auragrids
+package com.lusho.auragrids
 
 import io.flutter.embedding.android.FlutterActivity
 
